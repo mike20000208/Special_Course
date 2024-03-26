@@ -1,0 +1,4 @@
+the width of image: 848 
+the height of image: 480 
+the principal point (x0, y0) = (423, 243) (in pixel)
+the focal length fx = fy = 423.64 (in pixel)

@@ -1,0 +1,86 @@
+Notes
+
+	11/13
+
+		1. Seems that "ransac.h", "sac_model_plane.h", and "sac_model_sphere.h" are not comptiable to some from "method_types.h", 
+		   "model_types.h", and "sac_segmentation.h". (solved)
+
+		2. For pcl::visualization::PCLVisualizer, 'r' can go back to the center of pointcloud, 'q' can quite the window. 
+
+		3. Fro the coordinates, X is red, Y is green, and Z is blue. (USEFUL!!!!!)
+
+		4. When being converted to PCL format, the raw z-value is positive and the raw y-value is negative. 
+
+		5. The model coeffcient of a plane ax + by + cz + d = 0 will look like: (a, b, c, d) = (-0.0391, -0.9992, -0.0076, -0.5846). 
+
+
+	11/14 
+
+		1. Need more information to determine the path. (e.g., roughness)
+
+		2. Think about how to use additional information to generate the more sutiable path. 
+
+		3. Already checked the model coefficients, both methods (SampleConsensusModelPlane and SACSegmentation) have the similar results. 
+
+		4. Seems like the x-direction and y-direction in two formats of pointcloud are opposite. 
+
+
+	11/18
+
+		1. The score mechanism can work, but not really good. Besides, it take too long. (19 sec)
+
+		2. When scoring, should also consider the best path from the last one. Otherwise, the path won't be continued. 
+
+		3. Needs to find a way to optimize the slicing to reduce time cost. 
+
+		4. The problem should be on the ConditionalRemoval filter. Most of the time is spent on the filtering. 
+
+		5. If I want to extract the indices of removed points, I need to set extract_removed_indices to true in the constructor of 
+		   ConditionalRemoval filter. (USEFUL!!!!!)
+
+		6. After dynamically determine the boundary of ROI, the spent time is reduced, but still too long. Needs to be below 1 sec. 
+
+		7. The weird thing is that the optimized slicing method turns out to need more time than the original. (15.11 sec)
+
+		8. In experiment, get_slice_1() takes 12.68 s, and get_slice_2() takes 14.8 s. (when searching range z = [0, 8])
+
+		9. In experiment, get_slice_1() takes 7.41 s, and get_slice_2() takes 8.48 s. (when searching range z = [0, 6])
+
+		10. In experiment, get_slice_1() takes 5.3 s, and get_slice_2() takes 6.13 s. (when searching range z = [0, 5])
+
+		11. In experiment, get_slice_1() takes 3.95 s, and get_slice_2() takes 4.025 s. (when searching range z = [0, 4])
+
+		12. Set several weight parameters to control the path planner. 
+
+		13. 
+
+
+	11/22
+
+		1. can avoid ditch or something very close to the camera and high. 
+
+		2. can go to the specified direction. 
+
+		3. can make the path consistant. 
+
+
+	11/23 
+
+		1. Need to understand the effect of the parameter "Probability". 
+
+		2. Change the slicing method and the new one is much faster that the old one. 
+
+		3. Need to check A star algorithm, figure out how to apply it on our case. 
+
+		4. Figure out how to convert the slicing mechanism into graph, which means that I need to undertand the definition of graph. 
+
+		5. Figure out what data strucuter should I use to save the graph or grid. 
+
+
+
+
+
+
+
+
+

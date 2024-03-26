@@ -1,0 +1,25 @@
+Idea 1: Use morphology transformations and filters. 
+
+	1.1. Use dialation, opening, and other morphology transformation, but failed. 
+
+	1.2. Use high-pass filter to enhance the details in the image. (maybe can use low-pass filter to reduce the noise, but with the risk to eliminate the wire as well). 
+
+		 Comment: the result from high-pass filter looks fine. it highlight the lines in the image to some degree. maybe can apply some contrast enhancement, 
+			      edge detection, Laplacian operator, or hough line detection. Additionally, maybe the filter than can remove the background noise can be used. 
+
+	1.3. tried the line detection after high-pass filter, but failed. 
+
+		 Comment: maybe need to enhance the contrast first. otherwise there are too many noise from the background. 
+
+	1.4. tried the Laplacian operator, but the result is worse than the one from high-pass filter. 
+
+		 Comment: 
+
+	1.5. tried the contrast enhancement followed by the hogh-pass filter. the result looks a little bit better than one from the original. 
+
+		 Comment: the noise from the background is still the problem. 
+
+	1.6. maybe can use some mask operation to separate the wire from the background. this might be useful when the weed is green. 
+
+
+Idea 2: Found a paper about wire or cable detection, and the results looks good, but haven't looked into it. 
